@@ -1,9 +1,9 @@
 <script setup>
+
 </script>
 
 <template>
-  <!-- 一级路由出口组件 -->
-  <RouterView />
+  <p>分类页</p>
 </template>
 
 <style scoped></style>
