@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <p>Home页</p>
+  <div>Home页</div>
 </template>
 
 <style scoped></style>
