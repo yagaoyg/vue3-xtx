@@ -1,12 +1,7 @@
 <script setup>
 import { useCategoryStore } from '@/stores/category'
-import { onMounted } from 'vue'
+
 const categoryStore = useCategoryStore()
-
-onMounted(() => {
-  console.log(categoryStore.categoryList)
-})
-
 </script>
 
 <template>
@@ -14,7 +9,7 @@ onMounted(() => {
     <ul class="list">
       <li v-for="item in categoryStore.categoryList" :key="item.id">
         <RouterLink to="/">{{ item.name }}</RouterLink>
-        <RouterLink v-for="i in item.children.slice(0, 2)" :key="i.id">
+        <RouterLink v-for="i in item.children.slice(0, 2)" :key="i.id" to="/">
           {{ i.name }}
         </RouterLink>
 
@@ -42,9 +37,11 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .home-category {
+  position: relative;
   width: 250px;
-  height: 495px;
+  height: 500px;
   background-color: rgba($color: #000000, $alpha: 0.4);
+  z-index: 99;
 
   .list {
     li {
