@@ -31,7 +31,7 @@ watch([elementX, elementY], () => {
   // console.log('变化了')
 
   // 若鼠标如果鼠标没有移入盒子里面 不执行后面的逻辑
-  if (isOutside) return
+  if (isOutside.value) return
 
   // 有效范围内控制滑块距离
   // 横向
