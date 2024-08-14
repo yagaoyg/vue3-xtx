@@ -25,9 +25,9 @@ onMounted(() => {
 // })
 
 // sku规格被操作时
-// const skuChange = (sku) => {
-//   console.log(sku)
-// }
+const skuChange = (sku) => {
+  console.log(sku)
+}
 
 </script>
 

@@ -6,7 +6,8 @@
   <div class="shortcut">
     <div class="wrapper">
       <ul>
-        <template v-if="true">
+        <!-- 多模版渲染 区分登陆状态和非登陆状态 -->
+        <template v-if="false">
           <li><a href="javascript:;"><i class="iconfont icon-user"></i>周杰伦</a></li>
           <li>
             <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
@@ -19,7 +20,7 @@
           <li><a href="javascript:;">会员中心</a></li>
         </template>
         <template v-else>
-          <li><a href="#" class="login">请先登录</a></li>
+          <li><a href="#" class="login" @click="$router.push('/login')">请先登录</a></li>
           <li><a href="#">免费注册</a></li>
           <li><a href="#">我的订单</a></li>
           <li><a href="#">会员中心</a></li>
