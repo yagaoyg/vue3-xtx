@@ -30,18 +30,44 @@ export const useCartStore = defineStore('cart', () => {
     cartList.value = cartList.value.filter(item => item.skuId !== skuId)
   }
 
+  // 单选功能
+  const singleCheck = (skuId, selected) => {
+    // 通过skuId找到要修改的那一项 然后把它的selected修改为传过来的selected
+    const item = cartList.value.find(item => item.skuId === skuId)
+    item.selected = selected
+  }
+
   // 总计
   const sum = computed(() => cartList.value.reduce((prve, curr) => prve + curr.count * curr.price, 0))
 
   // 总的数量
   const total = computed(() => cartList.value.reduce((prev, curr) => prev + curr.count, 0))
 
+  // 是否全选
+  const isAll = computed(() => cartList.value.every(item => item.selected))
+
+  // 全选控制
+  const allCheck = (selected) => {
+    // 把 cartList 中的每一项中的 selected 都设置成全选框的状态
+    cartList.value.forEach(item => item.selected = selected)
+  }
+
+  // 选中合计数量
+  const checkTotal = computed(() => cartList.value.filter(item => item.selected).reduce((prev, curr) => prev + curr.count, 0))
+  // 选中合计
+  const checkSum = computed(() => cartList.value.filter(item => item.selected).reduce((prve, curr) => prve + curr.count * curr.price, 0))
+
   return {
     cartList,
     addCart,
     delCart,
     sum,
-    total
+    total,
+    singleCheck,
+    isAll,
+    allCheck,
+    checkTotal,
+    checkSum
   }
 }, {
   persist: true,
