@@ -1,5 +1,9 @@
 <script setup>
 import { ref } from 'vue'
+import { loginAPI } from '@/apis/user'
+import { ElMessage } from 'element-plus'
+import 'element-plus/theme-chalk/el-message.css'
+import { useRouter } from 'vue-router'
 
 // 表单校验功能(账号名+密码)
 // 准备表单对象
@@ -33,19 +37,27 @@ const rules = ref({
 
 // 获取 form 元素实例
 const formRef = ref(null)
+const router = useRouter()
 const doLogin = () => {
-  formRef.value.validate((valid) => {
+  const { account, password } = form.value
+  formRef.value.validate(async (valid) => {
     // valid:所有表单项都通过校验才为 true
     // console.log(valid)
-    // 以valid作为判断条件 如果通过校验 就执行登陆逻辑
+    // 以valid作为判断条件 如果通过校验 就执行登录逻辑
     if (valid) {
-      // 登陆逻辑
+      // 登录逻辑
+      const res = await loginAPI({ account, password })
+      console.log(res)
+      // 1.提示用户成功
+      ElMessage({ type: 'success', message: '登录成功！' })
+      // 2.跳转首页
+      router.replace({ path: '/' })
     }
   })
 }
 
 /**
- * 登陆校验：
+ * 登录校验：
  * 1.用户名和密码 只需要通过简单的配置 （看文档的方式 - 复杂功能通过多个不同组件的拆解）
  * 2.同意协议 自定义规则 validator:(rule,value,callback)=>{}
  * 3.统一校验 通过调用 form 实例的方法 validate -> true
