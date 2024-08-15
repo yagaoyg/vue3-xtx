@@ -1,6 +1,6 @@
 // 封装购物车模块
 import { defineStore } from "pinia"
-import { ref } from "vue"
+import { computed, ref } from "vue"
 
 export const useCartStore = defineStore('cart', () => {
   // 1.定义state - cartList
@@ -22,9 +22,26 @@ export const useCartStore = defineStore('cart', () => {
     }
   }
 
+  // 删除功能
+  const delCart = skuId => {
+    // 思路：1.找到要删除项的下标 用splice方法
+    // 2.使用过滤方法 - filter
+    // console.log('点击了删除！')
+    cartList.value = cartList.value.filter(item => item.skuId !== skuId)
+  }
+
+  // 总计
+  const sum = computed(() => cartList.value.reduce((prve, curr) => prve + curr.count * curr.price, 0))
+
+  // 总的数量
+  const total = computed(() => cartList.value.reduce((prev, curr) => prev + curr.count, 0))
+
   return {
     cartList,
-    addCart
+    addCart,
+    delCart,
+    sum,
+    total
   }
 }, {
   persist: true,
