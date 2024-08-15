@@ -3,7 +3,7 @@ import axios from "axios"
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 import { useUserStore } from "@/stores/user"
-
+import router from "@/router"
 
 const httpInstance = axios.create({
   // 设置基地址
@@ -35,11 +35,24 @@ httpInstance.interceptors.response.use(res => {
   return res.data
 }, error => {
   // 超出 2xx 范围的状态码都会触发该函数。
+  const userStore = useUserStore()
   // 统一错误提示
   ElMessage({
     type: 'warning',
     message: error.response.data.message
   })
+
+  // 若出现401 token 失效 清除用户信息 跳转到登录页面
+  if (error.response.status === 401) {
+    // console.log('token失效了')
+    userStore.clearUserInfo()
+    router.replace({ path: '/login' })
+    ElMessage({
+      type: 'warning',
+      message: '登录状态失效'
+    })
+  }
+
   return Promise.reject(error)
 })
 
