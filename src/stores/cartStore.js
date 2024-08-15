@@ -55,6 +55,12 @@ export const useCartStore = defineStore('cart', () => {
     }
   }
 
+  // 清除购物车数据
+  const clearCart = () => {
+    // console.log('退出登录了 自动清除购物车')
+    cartList.value = []
+  }
+
   // 单选功能
   const singleCheck = (skuId, selected) => {
     // 通过skuId找到要修改的那一项 然后把它的selected修改为传过来的selected
@@ -92,7 +98,8 @@ export const useCartStore = defineStore('cart', () => {
     isAll,
     allCheck,
     checkTotal,
-    checkSum
+    checkSum,
+    clearCart
   }
 }, {
   persist: true,

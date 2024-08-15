@@ -36,7 +36,7 @@ const skuChange = (sku) => {
 // 数据框部分
 const count = ref(1)
 const countChange = (count) => {
-  console.log(count)
+  // console.log(count)
 }
 
 // 添加购物车
