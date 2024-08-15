@@ -13,6 +13,9 @@ import { laztImg } from './directives'
 // 引入全局组件
 import { componentPlugin } from './components'
 
+// 引入 pinia 持久化插件
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
 // 测试接口函数
 // import { getCategory } from './apis/testAPI'
 // getCategory().then((result) => {
@@ -22,8 +25,11 @@ import { componentPlugin } from './components'
 // })
 
 const app = createApp(App)
+const pinia = createPinia()
+// 注册持久化插件
+pinia.use(piniaPluginPersistedstate)
 
-app.use(createPinia())
+app.use(pinia)
 app.use(router)
 app.use(laztImg)
 app.use(componentPlugin)

@@ -1,4 +1,7 @@
 <script setup>
+import { useUserStore } from '@/stores/user'
+
+const userStoer = useUserStore()
 
 </script>
 
@@ -7,8 +10,10 @@
     <div class="wrapper">
       <ul>
         <!-- 多模版渲染 区分登陆状态和非登陆状态 -->
-        <template v-if="false">
-          <li><a href="javascript:;"><i class="iconfont icon-user"></i>周杰伦</a></li>
+
+        <!-- 适配思路：登录时显示第一块 非登录时显示第二块  通过是否有token来判断 -->
+        <template v-if="userStoer.userInfo.token">
+          <li><a href="javascript:;"><i class="iconfont icon-user"></i>{{ userStoer.userInfo.account }}</a></li>
           <li>
             <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
               <template #reference>
