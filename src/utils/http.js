@@ -9,7 +9,7 @@ const httpInstance = axios.create({
   // 设置基地址
   baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
   // 设置超时时间
-  timeout: 5000
+  timeout: 15000
 })
 
 // 拦截器
@@ -38,9 +38,13 @@ httpInstance.interceptors.response.use(res => {
   // 超出 2xx 范围的状态码都会触发该函数。
   const userStore = useUserStore()
   // 统一错误提示
+  const msg = error.response.data.message || '发生错误！'
+  // const msg = '发生错误！'
+  console.log(error)
+
   ElMessage({
     type: 'warning',
-    message: error.response.data.message
+    message: msg
   })
 
   console.log('响应出现错误！')
