@@ -60,7 +60,8 @@ const router = createRouter({
           component: Member,
           children: [
             {
-              path: 'user',
+              // 路径置空 二级路由默认渲染此三级路由的内容
+              path: '',
               component: UserInfo
             },
             {
