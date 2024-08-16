@@ -26,6 +26,7 @@ httpInstance.interceptors.request.use(config => {
   return config
 }, error => {
   // 对请求错误做些什么
+  console.log('请求出现错误！！！')
   return Promise.reject(error)
 })
 
@@ -41,6 +42,8 @@ httpInstance.interceptors.response.use(res => {
     type: 'warning',
     message: error.response.data.message
   })
+
+  console.log('响应出现错误！')
 
   // 若出现401 token 失效 清除用户信息 跳转到登录页面
   if (error.response.status === 401) {
