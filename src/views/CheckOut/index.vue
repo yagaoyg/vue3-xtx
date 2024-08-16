@@ -32,6 +32,10 @@ const activeAddress = ref({})
 const switchAddress = item => {
   activeAddress.value = item
 }
+
+// 新增地址
+
+
 // 确认地址
 const confirm = () => {
   curAddress.value = activeAddress.value
@@ -189,6 +193,7 @@ const createOrder = async () => {
     </template>
   </el-dialog>
   <!-- 添加地址 -->
+
 </template>
 
 <style scoped lang="scss">
