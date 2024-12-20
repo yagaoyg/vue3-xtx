@@ -52,7 +52,7 @@ const doLogin = () => {
       // 1.提示用户成功
       ElMessage({ type: 'success', message: '登录成功！' })
       // 2.跳转首页
-      router.replace({ path: '/' })
+      router.push({ path: '/' })
     }
   })
 }
