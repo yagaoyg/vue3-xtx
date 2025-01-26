@@ -42,7 +42,7 @@ onMounted(() => {
     width: 306px;
     height: 406px;
 
-    background: #f0f9f4;
+    background: $sucColor;
     transition: all .5s;
 
     &:hover {

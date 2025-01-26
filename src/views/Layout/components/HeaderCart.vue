@@ -7,9 +7,9 @@ const cartStore = useCartStore()
 
 <template>
   <div class="cart">
-    <a class="curr" href="javascript:;">
+    <RouterLink class="curr" to="/cartlist">
       <i class="iconfont icon-cart"></i><em>{{ cartStore.cartList.length }}</em>
-    </a>
+    </RouterLink>
     <div class="layer">
       <div class="list">
         <div class="item" v-for="i in cartStore.cartList" :key="i.id">
@@ -127,6 +127,10 @@ const cartStore = useCartStore()
             color: $priceColor;
           }
         }
+      }
+
+      el-button {
+        background-color: $xtxColor;
       }
     }
   }

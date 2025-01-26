@@ -1,6 +1,6 @@
 <script setup>
 import { useUserStore } from '@/stores/userStore'
-import { useRouter } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 
 const userStoer = useUserStore()
 const router = useRouter()
@@ -31,17 +31,33 @@ const confirm = () => {
               </template>
             </el-popconfirm>
           </li>
-          <li><a href="javascript:;">我的订单</a></li>
-          <li><a href="javascript:;" @click="$router.push('member')">会员中心</a></li>
+          <li>
+            <RouterLink to="/member/order">我的订单</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/member">会员中心</RouterLink>
+          </li>
         </template>
         <template v-else>
-          <li><a href="#" class="login" @click="$router.push('/login')">请先登录</a></li>
-          <li><a href="#">免费注册</a></li>
-          <li><a href="#">我的订单</a></li>
-          <li><a href="#">会员中心</a></li>
-          <li><a href="#">帮助中心</a></li>
-          <li><a href="#">在线客服</a></li>
-          <li><a href="#"><i class="iconfont icon-mobile-phone"></i>手机版</a></li>
+          <li>
+            <RouterLink class="login" to="/login">请先登录</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/">免费注册</RouterLink>
+          </li>
+          <!-- <li>
+            <RouterLink to="/member/order">我的订单</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/member">会员中心</RouterLink>
+          </li> -->
+          <li>
+            <RouterLink to="/">帮助中心</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/">在线客服</RouterLink>
+          </li>
+          <!-- <li><a href="#"><i class="iconfont icon-mobile-phone"></i>手机版</a></li> -->
         </template>
       </ul>
     </div>

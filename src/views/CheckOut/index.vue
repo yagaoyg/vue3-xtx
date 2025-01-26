@@ -1,7 +1,7 @@
 <script setup>
 import { getCheckInfoAPI, createOrderAPI } from '@/apis/checkout'
 import { onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cartStore'
 
 const router = useRouter()
@@ -114,13 +114,13 @@ const createOrder = async () => {
             <tbody>
               <tr v-for="i in checkInfo.goods" :key="i.id">
                 <td>
-                  <a href="javascript:;" class="info">
+                  <RouterLink :to="`/detail/${i.id}`" class="info">
                     <img :src="i.picture" alt="">
                     <div class="right">
                       <p>{{ i.name }}</p>
                       <p>{{ i.attrsText }}</p>
                     </div>
-                  </a>
+                  </RouterLink>
                 </td>
                 <td>&yen;{{ i.price }}</td>
                 <td>{{ i.count }}</td>
