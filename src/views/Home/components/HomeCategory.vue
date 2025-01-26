@@ -8,8 +8,8 @@ const categoryStore = useCategoryStore()
   <div class="home-category">
     <ul class="list">
       <li v-for="item in categoryStore.categoryList" :key="item.id">
-        <RouterLink to="/">{{ item.name }}</RouterLink>
-        <RouterLink v-for="i in item.children.slice(0, 2)" :key="i.id" to="/">
+        <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+        <RouterLink v-for="i in item.children.slice(0, 2)" :key="i.id" :to="`/category/sub/${i.id}`">
           {{ i.name }}
         </RouterLink>
 
@@ -17,7 +17,7 @@ const categoryStore = useCategoryStore()
           <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
           <ul>
             <li v-for="i in item.goods" :key="i.id">
-              <RouterLink to="/">
+              <RouterLink :to="`/detail/${i.id}`">
                 <img :src="i.picture" alt="" />
                 <div class="info">
                   <p class="name ellipsis-2">

@@ -28,10 +28,11 @@ onMounted(() => getOrder())
         <p class="tip" v-if="$route.query.payResult === 'true'">我们将尽快为您发货，收货期间请保持手机畅通</p>
         <p class="tip" v-else>支付异常 请重试或联系我们</p>
         <p>支付方式：<span>支付宝</span></p>
-        <p>支付金额：<span>¥{{ orderInfo.payMoney?.toFixed(2) }}</span></p>
+        <p>支付金额：<span>¥{{ orderInfo.payMoney?.toFixed(2) || ' 请等待... ' }}</span></p>
         <div class="btn">
-          <el-button type="primary" style="margin-right:20px">查看订单</el-button>
-          <el-button>进入首页</el-button>
+          <RouterLink to="/member/order"><el-button type="primary" style="margin-right:20px">查看订单</el-button>
+          </RouterLink>
+          <RouterLink to="/"><el-button>进入首页</el-button></RouterLink>
         </div>
         <p class="alert">
           <span class="iconfont icon-tip"></span>

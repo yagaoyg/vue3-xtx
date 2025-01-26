@@ -9,22 +9,22 @@ import { useCartStore } from '@/stores/cartStore'
 
 const goodsData = ref({})
 const route = useRoute()
-const getDetail = async () => {
-  const res = await getDetailAPI(route.params.id)
-  // console.log(res)
+const getDetail = async (id) => {
+  const res = await getDetailAPI(id)
+  console.log(res)
   goodsData.value = res.result
   // console.log(goodsData.value)
 }
 
 onMounted(() => {
-  getDetail()
+  getDetail(route.params.id)
 })
 
-// onBeforeRouteUpdate(async () => {
-//   goodsData.value = {}
-//   await getDetail()
-//   console.log('路由变化了', goodsData.value)
-// })
+onBeforeRouteUpdate(async (to) => {
+  goodsData.value = {}
+  await getDetail(to.params.id)
+  // console.log('路由变化了', goodsData.value)
+})
 
 // sku规格被操作时
 let skuObj = {}
@@ -53,6 +53,10 @@ const addCart = () => {
       skuId: skuObj.skuId,
       attrsText: skuObj.specsText,
       selected: true
+    })
+    ElMessage({
+      type: 'success',
+      message: '添加购物车成功'
     })
   } else {
     // 规格没有选择 提示用户
