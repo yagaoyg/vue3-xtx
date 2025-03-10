@@ -23,10 +23,12 @@ defineProps({
   width: 220px;
   padding: 20px 30px;
   text-align: center;
-  transition: all .5s;
+  transition: all .2s;
+  border-radius: 10px;
+  background-color: #fff;
 
   &:hover {
-    transform: translate3d(0, -3px, 0);
+    transform: translate3d(0, -5px, 0);
     box-shadow: 0 3px 8px rgb(0 0 0 / 20%);
   }
 

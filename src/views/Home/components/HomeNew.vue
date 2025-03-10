@@ -41,13 +41,15 @@ onMounted(() => {
   li {
     width: 306px;
     height: 406px;
+    border-radius: 10px;
+    overflow: hidden;
 
     background: $sucColor;
-    transition: all .5s;
+    transition: all .2s;
 
     &:hover {
-      transform: translate3d(0, -3px, 0);
-      box-shadow: 0 3px 8px rgb(0 0 0 / 20%);
+      transform: translate3d(0, -5px, 0);
+      box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
     }
 
     img {
