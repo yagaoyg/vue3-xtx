@@ -1,19 +1,8 @@
 // createRouter:创建路由实例
 // createWebHistory:创建history模式的路由
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
 import Home from '@/views/Home/index.vue'
-import Category from '@/views/Category/index.vue'
-import SubCategory from '@/views/SubCategory/index.vue'
-import Detail from '@/views/Detail/index.vue'
-import CartList from '@/views/CartList/index.vue'
-import CheckOut from '@/views/CheckOut/index.vue'
-import Pay from '@/views/Pay/index.vue'
-import PayBack from '@/views/Pay/PayBack.vue'
-import Member from '@/views/Member/index.vue'
-import UserInfo from '@/views/Member/components/UserInfo.vue'
-import UserOrder from '@/views/Member/components/UserOrder.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,44 +18,44 @@ const router = createRouter({
         },
         {
           path: 'category/:id',
-          component: Category
+          component: () => import('@/views/Category/index.vue')
         },
         {
           path: 'category/sub/:id',
-          component: SubCategory
+          component: () => import('@/views/SubCategory/index.vue')
         },
         {
           path: 'detail/:id',
-          component: Detail
+          component: () => import('@/views/Detail/index.vue')
         },
         {
           path: 'cartlist',
-          component: CartList
+          component: () => import('@/views/CartList/index.vue')
         },
         {
           path: 'checkout',
-          component: CheckOut
+          component: () => import('@/views/CheckOut/index.vue')
         },
         {
           path: 'pay',
-          component: Pay
+          component: () => import('@/views/Pay/index.vue')
         },
         {
           path: 'paycallback',
-          component: PayBack
+          component: () => import('@/views/Pay/PayBack.vue')
         },
         {
           path: 'member',
-          component: Member,
+          component: () => import('@/views/Member/index.vue'),
           children: [
             {
               // 路径置空 二级路由默认渲染此三级路由的内容
               path: '',
-              component: UserInfo
+              component: () => import('@/views/Member/components/UserInfo.vue')
             },
             {
               path: 'order',
-              component: UserOrder
+              component: () => import('@/views/Member/components/UserOrder.vue')
             },
           ]
         },
@@ -74,7 +63,7 @@ const router = createRouter({
     },
     {
       path: '/login',
-      component: Login
+      component: () => import('@/views/Login/index.vue')
     }
   ],
   // 路由滚动行为配置
