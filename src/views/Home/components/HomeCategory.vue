@@ -40,7 +40,7 @@ const categoryStore = useCategoryStore()
   position: relative;
   width: 250px;
   height: 500px;
-  background-color: rgba($color: #000000, $alpha: 0.4);
+  background-color: rgba($color: #000000, $alpha: 0.6);
   z-index: 99;
 
   .list {
@@ -68,7 +68,7 @@ const categoryStore = useCategoryStore()
       .layer {
         width: 990px;
         height: 500px;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba($color: #000000, $alpha: 0.4);
         position: absolute;
         left: 250px;
         top: 0;
@@ -79,10 +79,11 @@ const categoryStore = useCategoryStore()
           font-size: 20px;
           font-weight: normal;
           line-height: 80px;
+          color: #fff;
 
           small {
             font-size: 16px;
-            color: #666;
+            color: #ddd;
           }
         }
 
@@ -96,11 +97,17 @@ const categoryStore = useCategoryStore()
             margin-right: 15px;
             margin-bottom: 15px;
             border: 1px solid #eee;
-            border-radius: 4px;
             background: #fff;
+            border-radius: 10px;
+            transition: all 0.2s;
 
             &:nth-child(3n) {
               margin-right: 0;
+            }
+
+            &:hover {
+              background: $sucColor;
+              transform: translate(0, -5px);
             }
 
             a {
@@ -110,9 +117,9 @@ const categoryStore = useCategoryStore()
               align-items: center;
               padding: 10px;
 
-              &:hover {
-                background: $sucColor;
-              }
+              // &:hover {
+              //   background: $sucColor;
+              // }
 
               img {
                 width: 95px;

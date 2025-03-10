@@ -21,7 +21,9 @@ const { categoryData } = useCategory()
       <div class="category-banner">
         <el-carousel height="500px">
           <el-carousel-item v-for="item in bannerList" :key="item.id">
-            <img :src="item.imgUrl" alt="">
+            <RouterLink :to="item.hrefUrl">
+              <img :src="item.imgUrl" alt="">
+            </RouterLink>
           </el-carousel-item>
         </el-carousel>
       </div>

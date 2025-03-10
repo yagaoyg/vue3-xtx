@@ -1,13 +1,14 @@
 <script setup>
 import { getBannerAPI } from '@/apis/home'
 import { onMounted, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const bannerList = ref([])
 const getBanner = async () => {
   const res = await getBannerAPI()
   // console.log(res)
-  bannerList.value = res.result
-  // console.log(bannerList.value)
+  bannerList.value = res
+  console.log(bannerList.value)
 }
 
 onMounted(() => {
@@ -20,7 +21,9 @@ onMounted(() => {
   <div class="home-banner">
     <el-carousel height="500px">
       <el-carousel-item v-for="item in bannerList" :key="item.id">
-        <img :src="item.imgUrl" alt="">
+        <RouterLink :to="item.hrefUrl">
+          <img :src="item.imgUrl" alt="">
+        </RouterLink>
       </el-carousel-item>
     </el-carousel>
   </div>

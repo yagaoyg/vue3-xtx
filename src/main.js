@@ -16,14 +16,6 @@ import { componentPlugin } from './components'
 // 引入 pinia 持久化插件
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-// 测试接口函数
-// import { getCategory } from './apis/testAPI'
-// getCategory().then((result) => {
-//   console.log(result)
-// }).catch((err) => {
-//   console.log(err)
-// })
-
 const app = createApp(App)
 const pinia = createPinia()
 // 注册持久化插件
